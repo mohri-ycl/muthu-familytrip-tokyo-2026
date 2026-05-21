@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokyo Trip · May 22–28, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --paper: #faf7f2;
+    --warm: #f0ebe0;
+    --red: #c0392b;
+    --red-light: #e8d5d3;
+    --gold: #c9920a;
+    --gold-light: #f5ecd0;
+    --teal: #1a6b6b;
+    --teal-light: #d0e8e8;
+    --purple: #5c3d7a;
+    --purple-light: #e5d8f0;
+    --green: #2d6e3e;
+    --green-light: #d5eadb;
+    --blue: #1e4d8c;
+    --blue-light: #d5e3f5;
+    --orange: #c45f1a;
+    --orange-light: #f5e0d0;
+    --border: #d8d0c0;
+    --shadow: rgba(26,20,16,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.015) 20px,
+      rgba(255,255,255,0.015) 40px
+    );
+  }
+  .header-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+  header h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  header h1 span { color: var(--gold); }
+  .header-meta {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(250,247,242,0.7);
+    letter-spacing: 0.05em;
+  }
+  .header-meta span strong { color: var(--paper); }
+
+  /* NAV TABS */
+  .nav-tabs {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    padding: 0.9rem 1.4rem;
+    color: rgba(250,247,242,0.5);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    font-family: 'DM Mono', monospace;
+  }
+  .nav-tab:hover { color: var(--paper); }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* MAIN LAYOUT */
+  main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+  /* SECTION */
+  section { display: none; }
+  section.active { display: block; }
+
+  /* OVERVIEW GRID */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .day-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+  .day-card-header {
+    padding: 1rem 1.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--warm);
+  }
+  .day-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+  .day-card-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .day-card-date {
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+  }
+  .day-card-body { padding: 0.9rem 1.25rem; }
+  .day-card-stops { list-style: none; }
+  .day-card-stops li {
+    font-size: 0.82rem;
+    color: #555;
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .day-card-stops li::before {
+    content: '→';
+    color: #bbb;
+    font-size: 0.75rem;
+  }
+  .weather-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-top: 0.6rem;
+    font-weight: 500;
+  }
+  .weather-sun { background: var(--gold-light); color: var(--gold); }
+  .weather-rain { background: var(--blue-light); color: var(--blue); }
+  .weather-cloud { background: var(--teal-light); color: var(--teal); }
+
+  /* COLOR CODING */
+  .c1 { background: #fff0ee; color: var(--red); }
+  .c2 { background: var(--blue-light); color: var(--blue); }
+  .c3 { background: var(--purple-light); color: var(--purple); }
+  .c4 { background: var(--green-light); color: var(--green); }
+  .c5 { background: var(--orange-light); color: var(--orange); }
+  .c6 { background: var(--gold-light); color: var(--gold); }
+  .c7 { background: var(--teal-light); color: var(--teal); }
+
+  /* ALERT BOX */
+  .alert {
+    background: #fff8e6;
+    border: 1px solid #f0d080;
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .alert strong { color: var(--gold); }
+
+  /* DETAIL SECTION */
+  .day-detail { margin-bottom: 3rem; }
+  .day-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--warm);
+  }
+  .day-badge-lg {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .day-meta { flex: 1; }
+  .day-meta h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .day-meta p { font-size: 0.82rem; color: #888; font-family: 'DM Mono', monospace; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.45rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.65rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--paper);
+  }
+  .timeline-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: #aaa;
+    margin-bottom: 0.25rem;
+  }
+  .stop-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+  .stop-card h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stop-card .emoji { font-size: 1.1rem; }
+  .stop-desc { font-size: 0.83rem; color: #555; line-height: 1.6; margin-bottom: 0.6rem; }
+  .stop-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #888;
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 0.5rem;
+  }
+  .transport-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    padding: 0.22rem 0.65rem;
+    border-radius: 20px;
+    background: var(--warm);
+    color: #666;
+    font-weight: 500;
+    margin-right: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+  .ticket-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-right: 0.4rem;
+    margin-top: 0.4rem;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .ticket-primary {
+    background: var(--red);
+    color: white;
+  }
+  .ticket-primary:hover { background: #a33020; }
+  .ticket-secondary {
+    background: var(--warm);
+    color: var(--ink);
+    border: 1px solid var(--border);
+  }
+  .ticket-secondary:hover { background: var(--border); }
+
+  /* TIPS TABLE */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin: 1rem 0;
+  }
+  .info-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    font-size: 0.78rem;
+  }
+  .info-table th:first-child { border-radius: 8px 0 0 0; }
+  .info-table th:last-child { border-radius: 0 8px 0 0; }
+  .info-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--warm);
+    vertical-align: top;
+  }
+  .info-table tr:last-child td { border-bottom: none; }
+  .info-table tr:nth-child(even) td { background: var(--warm); }
+  .priority-high { color: var(--red); font-weight: 700; }
+  .priority-mid { color: var(--gold); font-weight: 600; }
+  .priority-low { color: var(--green); font-weight: 600; }
+
+  /* TRANSPORT SECTION */
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .transport-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .transport-card .route {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .transport-card .detail {
+    font-size: 0.75rem;
+    color: #888;
+    font-family: 'DM Mono', monospace;
+  }
+  .transport-card .cost {
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.75rem;
+  }
+  .transport-card .cost span {
+    font-size: 0.72rem;
+    background: var(--warm);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* TIPS SECTION */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .tip-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+  }
+  .tip-card h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .tip-card p { font-size: 0.8rem; color: #555; line-height: 1.6; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--warm);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-title small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #888;
+    margin-left: auto;
+  }
+
+  /* WEATHER ROW */
+  .weather-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  .weather-day {
+    text-align: center;
+    padding: 0.5rem 0.25rem;
+    border-radius: 8px;
+  }
+  .weather-day.highlight { background: var(--gold-light); }
+  .weather-day .wdate { font-size: 0.68rem; font-family: 'DM Mono', monospace; color: #888; }
+  .weather-day .wicon { font-size: 1.4rem; margin: 0.3rem 0; }
+  .weather-day .wtemp { font-size: 0.72rem; font-weight: 600; }
+  .weather-day .wrain { font-size: 0.65rem; color: var(--blue); font-family: 'DM Mono', monospace; }
+  .weather-day .wtheme { font-size: 0.6rem; color: #aaa; margin-top: 0.2rem; }
+
+  /* SCROLL ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fadeUp 0.4s ease both;
+  }
+  .fade-up:nth-child(2) { animation-delay: 0.05s; }
+  .fade-up:nth-child(3) { animation-delay: 0.1s; }
+  .fade-up:nth-child(4) { animation-delay: 0.15s; }
+  .fade-up:nth-child(5) { animation-delay: 0.2s; }
+  .fade-up:nth-child(6) { animation-delay: 0.25s; }
+  .fade-up:nth-child(7) { animation-delay: 0.3s; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--warm);
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 2rem 1rem 1.5rem; }
+    main { padding: 1.5rem 1rem; }
+    .weather-row { grid-template-columns: repeat(4, 1fr); }
+    .weather-row .weather-day:nth-child(n+5) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-jp">東京旅行 · 完整行程</p>
+  <h1>Tokyo Trip <span>2026</span></h1>
+  <div class="header-meta">
+    <span>🗓️ <strong>May 22 – 28</strong></span>
+    <span>👨‍👩‍👧‍👦 <strong>2 Adults + Boy 16 + Girl 12</strong></span>
+    <span>🗺️ <strong>11 Destinations</strong></span>
+    <span>🎢 <strong>Disney · Fuji · Harry Potter · teamLab</strong></span>
+  </div>
+</header>
+
+<nav class="nav-tabs" id="navTabs">
+  <div class="nav-tab active" onclick="showSection('overview')">Overview</div>
+  <div class="nav-tab" onclick="showSection('day1')">Day 1 · Asakusa</div>
+  <div class="nav-tab" onclick="showSection('day2')">Day 2 · DisneySea</div>
+  <div class="nav-tab" onclick="showSection('day3')">Day 3 · Disneyland</div>
+  <div class="nav-tab" onclick="showSection('day4')">Day 4 · Mt. Fuji</div>
+  <div class="nav-tab" onclick="showSection('day5')">Day 5 · Akihabara</div>
+  <div class="nav-tab" onclick="showSection('day6')">Day 6 · HP + teamLab</div>
+  <div class="nav-tab" onclick="showSection('day7')">Day 7 · Harajuku</div>
+  <div class="nav-tab" onclick="showSection('tickets')">🎟 Tickets</div>
+  <div class="nav-tab" onclick="showSection('transport')">🚇 Transport</div>
+  <div class="nav-tab" onclick="showSection('tips')">💡 Tips</div>
+</nav>
+
+<main>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section id="overview" class="active">
+
+  <div class="alert">
+    ⚡ <strong>Action Required:</strong> Disney tickets (May 23 & 24) and Harry Potter Studio (May 27) must be booked <strong>today</strong> — they sell out weeks in advance and cannot be purchased at the gate.
+  </div>
+
+  <!-- Weather Row -->
+  <div class="section-title">📅 7-Day Weather Forecast <small>Source: AccuWeather / Weathernews · Kawaguchiko checked separately</small></div>
+  <div class="weather-row">
+    <div class="weather-day">
+      <div class="wdate">5/22 Fri</div>
+      <div class="wicon">⛅</div>
+      <div class="wtemp">22°C</div>
+      <div class="wrain">30%</div>
+      <div class="wtheme">Arrival</div>
+    </div>
+    <div class="weather-day">
+      <div class="wdate">5/23 Sat</div>
+      <div class="wicon">🌧️</div>
+      <div class="wtemp">20°C</div>
+      <div class="wrain">80%</div>
+      <div class="wtheme">DisneySea</div>
+    </div>
+    <div class="weather-day">
+      <div class="wdate">5/24 Sun</div>
+      <div class="wicon">🌦️</div>
+      <div class="wtemp">21°C</div>
+      <div class="wrain">60%</div>
+      <div class="wtheme">Disneyland</div>
+    </div>
+    <div class="weather-day highlight">
+      <div class="wdate">5/25 Mon</div>
+      <div class="wicon">☀️</div>
+      <div class="wtemp">26°C</div>
+      <div class="wrain">0%</div>
+      <div class="wtheme">Mt. Fuji ✓</div>
+    </div>
+    <div class="weather-day">
+      <div class="wdate">5/26 Tue</div>
+      <div class="wicon">🌤️</div>
+      <div class="wtemp">24°C</div>
+      <div class="wrain">40%</div>
+      <div class="wtheme">Akihabara</div>
+    </div>
+    <div class="weather-day">
+      <div class="wdate">5/27 Wed</div>
+      <div class="wicon">⛅</div>
+      <div class="wtemp">21°C</div>
+      <div class="wrain">90%</div>
+      <div class="wtheme">HP+teamLab</div>
+    </div>
+    <div class="weather-day">
+      <div class="wdate">5/28 Thu</div>
+      <div class="wicon">🌧️</div>
+      <div class="wtemp">19°C</div>
+      <div class="wrain">70%</div>
+      <div class="wtheme">Departure</div>
+    </div>
+  </div>
+
+  <!-- Day Cards Grid -->
+  <div class="section-title">🗓️ Full Itinerary</div>
+  <div class="overview-grid">
+
+    <div class="day-card fade-up" onclick="showSection('day1')">
+      <div class="day-card-header">
+        <span class="day-number c1">DAY 1</span>
+        <span class="day-card-title">Arrival · Asakusa</span>
+        <span class="day-card-date">May 22</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>✈️ Arrive Narita / Haneda</li>
+          <li>⛩️ Senso-ji Temple</li>
+          <li>🏮 Kaminarimon Gate</li>
+          <li>🛍️ Nakamise Shopping Street</li>
+        </ul>
+        <div class="weather-badge weather-rain">⛅ 30% rain · Easy arrival night</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day2')">
+      <div class="day-card-header">
+        <span class="day-number c2">DAY 2</span>
+        <span class="day-card-title">Tokyo DisneySea</span>
+        <span class="day-card-date">May 23</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>🌊 Fantasy Springs (new 2024)</li>
+          <li>🗺️ Journey to Center of Earth</li>
+          <li>⛵ Indiana Jones Adventure</li>
+          <li>🧜 Mermaid Lagoon</li>
+        </ul>
+        <div class="weather-badge weather-rain">🌧️ 80% rain · Indoor rides = perfect!</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day3')">
+      <div class="day-card-header">
+        <span class="day-number c3">DAY 3</span>
+        <span class="day-card-title">Tokyo Disneyland</span>
+        <span class="day-card-date">May 24</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>🏰 Beauty & the Beast Castle</li>
+          <li>🚀 Space Mountain</li>
+          <li>⛰️ Big Thunder Mountain</li>
+          <li>👻 Haunted Mansion</li>
+        </ul>
+        <div class="weather-badge weather-rain">🌦️ 60% rain · Still magical inside</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day4')">
+      <div class="day-card-header">
+        <span class="day-number c4">DAY 4</span>
+        <span class="day-card-title">Mt. Fuji Day Trip</span>
+        <span class="day-card-date">May 25</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>🗻 Kawaguchiko lakeside</li>
+          <li>💧 Oshino Hakkai springs</li>
+          <li>⛰️ Mt. Fuji 5th Station</li>
+          <li>🚂 Fuji Excursion express</li>
+        </ul>
+        <div class="weather-badge weather-sun">☀️ 0% rain · BEST DAY — book now!</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day5')">
+      <div class="day-card-header">
+        <span class="day-number c5">DAY 5</span>
+        <span class="day-card-title">Akihabara + Ueno</span>
+        <span class="day-card-date">May 26</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>⚡ Akihabara Electric Town</li>
+          <li>🎮 Anime stores & arcades</li>
+          <li>🐼 Ueno Zoo (pandas!)</li>
+          <li>🌳 Ueno Park stroll</li>
+        </ul>
+        <div class="weather-badge weather-cloud">🌤️ 40% rain · Mix of indoor/outdoor</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day6')">
+      <div class="day-card-header">
+        <span class="day-number c6">DAY 6</span>
+        <span class="day-card-title">Harry Potter + teamLab</span>
+        <span class="day-card-date">May 27</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>🧙 WB Studio Tour Tokyo</li>
+          <li>🔮 Diagon Alley & Great Hall</li>
+          <li>🎨 teamLab Borderless</li>
+          <li>💡 Azabudai Hills evening</li>
+        </ul>
+        <div class="weather-badge weather-rain">🌧️ 90% rain · Both fully indoor ✓</div>
+      </div>
+    </div>
+
+    <div class="day-card fade-up" onclick="showSection('day7')">
+      <div class="day-card-header">
+        <span class="day-number c7">DAY 7</span>
+        <span class="day-card-title">Harajuku · Shibuya · Shinjuku</span>
+        <span class="day-card-date">May 28</span>
+      </div>
+      <div class="day-card-body">
+        <ul class="day-card-stops">
+          <li>👗 Takeshita Street Harajuku</li>
+          <li>⛩️ Meiji Jingu Shrine</li>
+          <li>🚦 Shibuya Scramble Crossing</li>
+          <li>🦖 Shinjuku · then airport ✈️</li>
+        </ul>
+        <div class="weather-badge weather-rain">🌧️ 70% rain · Bring umbrella</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== DAY 1 ===================== -->
+<section id="day1">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">01</div>
+      <div class="day-meta">
+        <h2>✈️ Arrival · Asakusa</h2>
+        <p>Friday, May 22 · Easy arrival evening · ⛅ ~30% rain</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">AFTERNOON</div>
+        <div class="stop-card">
+          <h3><span class="emoji">✈️</span> Arrive at Airport</h3>
+          <p class="stop-desc">Narita (NRT) or Haneda (HND) → Check in to hotel. Buy a <strong>Suica IC card</strong> at the airport — works on all trains, subways, convenience stores.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">7:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">⛩️</span> Senso-ji Temple & Kaminarimon Gate</h3>
+          <p class="stop-desc">Tokyo's most iconic temple — stunning even at night. Walk through Nakamise Street to the Thunder Gate and main hall. Atmospheric and crowd-free compared to daytime.</p>
+          <div class="stop-address">📍 2-3-1 Asakusa, Taito City, Tokyo 111-0032</div>
+          <span class="transport-tag">🚇 Ginza Line → Asakusa Stn Exit 1 → 1-min walk</span>
+          <span class="transport-tag">From Shinjuku: ~35 min · ¥252</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🍜</span> Dinner in Asakusa</h3>
+          <p class="stop-desc">Plenty of options nearby: <strong>tempura, ramen, soba, curry.</strong> Many places accommodate vegetarian requests. Try Hoppy Street for a lively izakaya atmosphere, or Kamiya Bar for something historic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 2 ===================== -->
+<section id="day2">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">02</div>
+      <div class="day-meta">
+        <h2>🌊 Tokyo DisneySea</h2>
+        <p>Saturday, May 23 · 🌧️ 80% rain — perfect for indoor rides!</p>
+      </div>
+    </div>
+    <div class="alert">
+      🌧️ Rain is actually a <strong>blessing at DisneySea</strong> — it keeps crowds slightly lower and most headline attractions are indoors or covered. Bring light ponchos.
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">8:00 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🚂</span> Depart for Maihama</h3>
+          <p class="stop-desc">Take JR Keiyo Line to Maihama Station, then Disney Resort Line monorail to Tokyo DisneySea Station. Or take the direct highway bus from Shinjuku Expressway Bus Terminal.</p>
+          <span class="transport-tag">🚇 JR Keiyo Line → Maihama Stn → Monorail</span>
+          <span class="transport-tag">From Shinjuku: ~50 min · ¥530</span>
+          <span class="transport-tag">🚌 Bus from Shinjuku: ~40 min · ¥1,000 adult / ¥500 child</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:00 AM – 9:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🌊</span> Tokyo DisneySea</h3>
+          <p class="stop-desc"><strong>For the 16-yr-old:</strong> Journey to the Center of the Earth, Indiana Jones Adventure, Raging Spirits. <strong>For the 12-yr-old:</strong> Mermaid Lagoon, Arabian Coast. <strong>Everyone:</strong> Fantasy Springs (new 2024 area) — book Premier Access early in the app!</p>
+          <div class="stop-address">📍 1-13 Maihama, Urayasu, Chiba 279-8511</div>
+          <a href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" class="ticket-btn ticket-primary">🎟 Official Tickets</a>
+          <a href="https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/" target="_blank" class="ticket-btn ticket-secondary">Klook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 3 ===================== -->
+<section id="day3">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">03</div>
+      <div class="day-meta">
+        <h2>🏰 Tokyo Disneyland</h2>
+        <p>Sunday, May 24 · 🌦️ 60% rain</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🚂</span> Depart for Maihama</h3>
+          <p class="stop-desc">Same station as DisneySea — Maihama Station. Walk directly to Disneyland entrance (no monorail needed).</p>
+          <span class="transport-tag">🚇 JR Keiyo Line → Maihama Stn → walk directly</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:00 AM – 9:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🏰</span> Tokyo Disneyland</h3>
+          <p class="stop-desc"><strong>For the 16-yr-old:</strong> Space Mountain, Splash Mountain, Big Thunder Mountain. <strong>For the 12-yr-old:</strong> Beauty and the Beast Castle (Fantasyland) — absolutely stunning, book Premier Access immediately! <strong>Everyone:</strong> Haunted Mansion, Pirates of the Caribbean, evening parade.</p>
+          <div class="stop-address">📍 1-1 Maihama, Urayasu, Chiba 279-0031</div>
+          <a href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" class="ticket-btn ticket-primary">🎟 Official Tickets</a>
+          <a href="https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/" target="_blank" class="ticket-btn ticket-secondary">Klook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 4 ===================== -->
+<section id="day4">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">04</div>
+      <div class="day-meta">
+        <h2>🗻 Mt. Fuji Day Trip</h2>
+        <p>Monday, May 25 · ☀️ 0% rain · BEST weather day — don't reschedule!</p>
+      </div>
+    </div>
+    <div class="alert">
+      ☀️ May 25 is forecast at <strong>0% rain with sunny skies</strong> at Kawaguchiko — the best window all week. Mt. Fuji is clearest in the early morning, so an early departure is essential.
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">6:30 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🚂</span> Depart Shinjuku</h3>
+          <p class="stop-desc">Take the Limited Express <strong>"Fuji Excursion" (富士回遊)</strong> direct from Shinjuku to Kawaguchiko. No transfer needed. Book reserved seats in advance.</p>
+          <span class="transport-tag">🚇 Limited Express Fuji Excursion from Shinjuku</span>
+          <span class="transport-tag">~2 hours · ~¥4,130 reserved seat</span>
+          <a href="https://www.eki-net.com/en/" target="_blank" class="ticket-btn ticket-primary">🎟 Book Train (Eki-net)</a>
+          <a href="https://highwaybus.com/gp/index" target="_blank" class="ticket-btn ticket-secondary">Or Highway Bus</a>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🏔️</span> Kawaguchiko Lakeside</h3>
+          <p class="stop-desc">The lakeside provides the iconic Mt. Fuji reflection shot (Sakasa Fuji). Best light is early morning before clouds form around midday. Walk the northern shore for best angles.</p>
+          <div class="stop-address">📍 3641 Funatsu, Fujikawaguchiko, Yamanashi 401-0301</div>
+          <span class="transport-tag">📍 2-min walk from Kawaguchiko Station</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:30 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">💧</span> Oshino Hakkai (Eight Springs)</h3>
+          <p class="stop-desc">8 crystal-clear spring-fed ponds fed by Mt. Fuji snowmelt. Beautiful traditional village scenery. Great for photos and a relaxed 45-minute wander. Try the soft serve ice cream!</p>
+          <div class="stop-address">📍 Oshino, Minamitsuru District, Yamanashi 401-0511</div>
+          <span class="transport-tag">🚌 Bus from Kawaguchiko Station ~15 min</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">1:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">⛰️</span> Mt. Fuji 5th Station</h3>
+          <p class="stop-desc">Take the Fuji Subaru Line Bus up to 2,300m elevation. Even if you don't climb, the views are spectacular and the alpine air is refreshing. Bring a light jacket — it can be 10°C colder than the lake.</p>
+          <div class="stop-address">📍 Fuji Subaru Line 5th Station, Fujiyoshida, Yamanashi</div>
+          <span class="transport-tag">🚌 Bus from Kawaguchiko Station → ~50 min · ¥1,500 round trip</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">5:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🚂</span> Return to Shinjuku</h3>
+          <p class="stop-desc">Board the return Fuji Excursion train from Kawaguchiko Station. Arrive Shinjuku ~7 PM.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 5 ===================== -->
+<section id="day5">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">05</div>
+      <div class="day-meta">
+        <h2>⚡ Akihabara + Ueno</h2>
+        <p>Tuesday, May 26 · 🌤️ 40% rain</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">10:00 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">⚡</span> Akihabara Electric Town</h3>
+          <p class="stop-desc">The world capital of anime, manga, gaming, and electronics. Multi-floor stores with collectibles, figures, and rare merchandise. Arcades, claw machines, themed cafés. <strong>Give the 16-yr-old 2–3 hours of free roam here — absolute heaven.</strong></p>
+          <div class="stop-address">📍 Akihabara, Taito City / Chiyoda City, Tokyo</div>
+          <span class="transport-tag">🚇 JR Chuo-Sobu Line from Shinjuku → Akihabara Stn (Electric Town Exit)</span>
+          <span class="transport-tag">~20 min · ¥220</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">2:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🐼</span> Ueno Zoo</h3>
+          <p class="stop-desc">One of Japan's oldest and best urban zoos, home to giant pandas. The 12-yr-old will love the panda area, red pandas, and penguins. Combine with a stroll through Ueno Park afterward.</p>
+          <div class="stop-address">📍 9-83 Uenokoen, Taito City, Tokyo 110-8711</div>
+          <span class="transport-tag">🚇 JR Yamanote Line from Akihabara → Ueno Stn · ~3 min · ¥160</span>
+          <span class="transport-tag">Open Tue–Sun · 9:30 AM–5:00 PM · Closed Mondays</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">5:30 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🎮</span> Evening: Back to Akihabara</h3>
+          <p class="stop-desc">Return to Akihabara for night arcades (open until midnight), dinner at themed restaurants, and any last shopping. Retro Game Camp and Super Potato are must-visits for the teens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 6 ===================== -->
+<section id="day6">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">06</div>
+      <div class="day-meta">
+        <h2>🧙 Harry Potter + teamLab Borderless</h2>
+        <p>Wednesday, May 27 · 🌧️ 90% rain — both fully indoor ✓</p>
+      </div>
+    </div>
+    <div class="alert">
+      🧙 Running now: <strong>"A Letter from Hogwarts"</strong> — 25th Anniversary limited event (Mar 18 – Sep 6, 2026). Special seasonal displays and exclusive merchandise.
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">9:00 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🧙</span> Warner Bros. Studio Tour Tokyo — Making of Harry Potter</h3>
+          <p class="stop-desc">The world's largest indoor Harry Potter attraction. Great Hall, Diagon Alley, Hogwarts Express, broomstick riding, moving portraits, and Butterbeer. Allow <strong>minimum 4 hours</strong>. Tickets are timed entry — must book in advance. Fun fact: the train plays Harry Potter music between stations!</p>
+          <div class="stop-address">📍 1-1-7 Kasugacho, Nerima-ku, Tokyo 179-0074</div>
+          <span class="transport-tag">🚇 Toei Oedo Line from Shinjuku → Toshimaen Stn · ~20 min · ¥280</span>
+          <span class="transport-tag">Or Seibu Ikebukuro Line from Ikebukuro → Toshimaen · ~17 min · ¥210</span>
+          <span class="transport-tag">2-min walk from Toshimaen Station</span>
+          <br>
+          <a href="https://www.wbstudiotour.jp/en/tickets/" target="_blank" class="ticket-btn ticket-primary">🎟 Official Tickets (Required)</a>
+          <a href="https://www.klook.com/en-US/activity/79373-warner-bros-studio-tour-tokyo/" target="_blank" class="ticket-btn ticket-secondary">Klook</a>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">5:30 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🎨</span> teamLab Borderless: MORI Building Digital Art Museum</h3>
+          <p class="stop-desc">A "museum without a map" — 50+ digital art spaces where artworks flow freely between rooms, responding to your movement. Completely immersive and unlike anything else. Open until 9 PM, so the evening slot works perfectly. Allow 2–3 hours. Wear pants (mirrored floors!).</p>
+          <div class="stop-address">📍 Azabudai Hills Garden Plaza B, B1F, 5-9 Toranomon, Minato-ku, Tokyo 106-0001</div>
+          <span class="transport-tag">🚇 Tokyo Metro Hibiya Line → Kamiyacho Stn Exit 5 → 2-min walk</span>
+          <span class="transport-tag">From Toshimaen: ~35 min via Oedo → Hibiya Line at Kasumigaseki</span>
+          <br>
+          <a href="https://www.teamlab.art/e/tokyo/" target="_blank" class="ticket-btn ticket-primary">🎟 Official Tickets</a>
+          <a href="https://www.klook.com/en-US/activity/90488-teamlab-borderless-azabudai-hills-tokyo/" target="_blank" class="ticket-btn ticket-secondary">Klook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAY 7 ===================== -->
+<section id="day7">
+  <div class="day-detail">
+    <div class="day-detail-header">
+      <div class="day-badge-lg">07</div>
+      <div class="day-meta">
+        <h2>🏙️ Harajuku · Shibuya · Shinjuku</h2>
+        <p>Thursday, May 28 · 🌧️ 70% rain · Departure day</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">10:00 AM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">👗</span> Takeshita Street, Harajuku</h3>
+          <p class="stop-desc">Colorful, chaotic, and totally unique — quirky fashion boutiques, rainbow crepes, fairy floss, and accessories. <strong>The 12-yr-old's absolute paradise.</strong> Also visit Meiji Jingu Shrine nearby for a serene contrast (5-min walk from Harajuku Station).</p>
+          <div class="stop-address">📍 1-17-5 Jingumae, Shibuya City, Tokyo 150-0001</div>
+          <span class="transport-tag">🚇 JR Yamanote Line from Shinjuku → Harajuku Stn (Takeshita Exit) · ~3 min · ¥160</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🚦</span> Shibuya Scramble Crossing</h3>
+          <p class="stop-desc">The world's busiest pedestrian crossing — up to 3,000 people cross from every direction simultaneously. Iconic Tokyo experience. See Hachiko Statue nearby. Optional: Shibuya Sky rooftop observation deck for aerial views.</p>
+          <div class="stop-address">📍 2-2-1 Dogenzaka, Shibuya City, Tokyo 150-0043</div>
+          <span class="transport-tag">🚇 JR Yamanote Line from Harajuku → Shibuya Stn (Hachiko Exit) · 2 min · ¥160</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">2:00 PM</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🦖</span> Shinjuku — Final Stop</h3>
+          <p class="stop-desc">Giant 3D cat billboard (East Exit), Godzilla head in Kabukicho, last-minute drugstore shopping (Matsumoto Kiyoshi, Don Quijote). Final ramen or sushi dinner, then head to the airport.</p>
+          <div class="stop-address">📍 Shinjuku City, Tokyo 160-0022</div>
+          <span class="transport-tag">🚇 JR Yamanote Line from Shibuya → Shinjuku · ~7 min · ¥160</span>
+          <span class="transport-tag">✈️ Narita: NEX from Shinjuku ~80 min · ¥3,070</span>
+          <span class="transport-tag">✈️ Haneda: via Shinagawa + Keikyu · ~40 min · ¥660</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TICKETS ===================== -->
+<section id="tickets">
+  <div class="section-title">🎟️ Ticket Booking Checklist</div>
+
+  <div class="alert">
+    ⚡ <strong>Today is May 21.</strong> Departure is TOMORROW. Disney tickets and Harry Potter must be purchased in the next few hours — they are not available at the gate.
+  </div>
+
+  <table class="info-table">
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Attraction</th>
+        <th>Date</th>
+        <th>Where to Buy</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="priority-high">🔴 NOW</span></td>
+        <td><strong>Tokyo DisneySea</strong></td>
+        <td>May 23 (Sat)</td>
+        <td>
+          <a href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" class="ticket-btn ticket-primary" style="font-size:0.7rem;">Official Site</a>
+          <a href="https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Klook</a>
+        </td>
+        <td style="font-size:0.78rem;">Cannot buy at gate. Select exact date. Use Klook if official site rejects your card.</td>
+      </tr>
+      <tr>
+        <td><span class="priority-high">🔴 NOW</span></td>
+        <td><strong>Tokyo Disneyland</strong></td>
+        <td>May 24 (Sun)</td>
+        <td>
+          <a href="https://www.tokyodisneyresort.jp/en/ticket/index.html" target="_blank" class="ticket-btn ticket-primary" style="font-size:0.7rem;">Official Site</a>
+          <a href="https://www.klook.com/en-US/activity/695-tokyo-disney-resort-1-day-pass-tokyo/" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Klook</a>
+        </td>
+        <td style="font-size:0.78rem;">Same website, different park + date. Check ◯/△/X availability before buying.</td>
+      </tr>
+      <tr>
+        <td><span class="priority-high">🔴 NOW</span></td>
+        <td><strong>Harry Potter WB Studio</strong></td>
+        <td>May 27 (Wed)</td>
+        <td>
+          <a href="https://www.wbstudiotour.jp/en/tickets/" target="_blank" class="ticket-btn ticket-primary" style="font-size:0.7rem;">Official Site</a>
+          <a href="https://www.klook.com/en-US/activity/79373-warner-bros-studio-tour-tokyo/" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Klook</a>
+        </td>
+        <td style="font-size:0.78rem;">Timed entry required. Select morning slot. Tickets are non-refundable. Date change costs ¥1,500.</td>
+      </tr>
+      <tr>
+        <td><span class="priority-mid">🟡 THIS WEEK</span></td>
+        <td><strong>teamLab Borderless</strong></td>
+        <td>May 27 evening</td>
+        <td>
+          <a href="https://www.teamlab.art/e/tokyo/" target="_blank" class="ticket-btn ticket-primary" style="font-size:0.7rem;">Official Site</a>
+          <a href="https://www.klook.com/en-US/activity/90488-teamlab-borderless-azabudai-hills-tokyo/" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Klook</a>
+        </td>
+        <td style="font-size:0.78rem;">Timed entry. Book 7 PM+ slot to follow Harry Potter. Klook sometimes slightly cheaper (¥3,200 vs ¥3,800).</td>
+      </tr>
+      <tr>
+        <td><span class="priority-mid">🟡 THIS WEEK</span></td>
+        <td><strong>Mt. Fuji Transport</strong></td>
+        <td>May 25 (Mon)</td>
+        <td>
+          <a href="https://www.eki-net.com/en/" target="_blank" class="ticket-btn ticket-primary" style="font-size:0.7rem;">Eki-net Train</a>
+          <a href="https://highwaybus.com/gp/index" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Highway Bus</a>
+        </td>
+        <td style="font-size:0.78rem;">Train (Fuji Excursion): ~¥4,130 reserved. Bus: ~¥2,000. Train is more comfortable & punctual.</td>
+      </tr>
+      <tr>
+        <td><span class="priority-low">🟢 BEFORE TRIP</span></td>
+        <td><strong>Japan SIM / eSIM</strong></td>
+        <td>Buy in advance</td>
+        <td>
+          <a href="https://www.klook.com/en-US/activity/9318-pocket-wifi-japan/" target="_blank" class="ticket-btn ticket-secondary" style="font-size:0.7rem;">Klook eSIM</a>
+        </td>
+        <td style="font-size:0.78rem;">IIJmio, Airalo, or Klook. Get before departure — airport SIMs are overpriced.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===================== TRANSPORT ===================== -->
+<section id="transport">
+  <div class="section-title">🚇 Transport Quick Reference</div>
+
+  <div class="alert">
+    💳 <strong>Buy a Suica or Pasmo IC card</strong> at Narita/Haneda airport on arrival. Tap in and out on all trains, subways, monorails, and buses. Also works at 7-Eleven, FamilyMart, Lawson, and vending machines.
+  </div>
+
+  <h3 style="font-family: 'Shippori Mincho'; font-size: 1.1rem; margin-bottom: 1rem;">Key Routes from Shinjuku</h3>
+  <div class="transport-grid">
+    <div class="transport-card">
+      <div class="route">Shinjuku → Asakusa</div>
+      <div class="detail">Tokyo Metro Ginza Line (Orange)</div>
+      <div class="cost"><span>~35 min</span><span>¥252</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → DisneySea / Disneyland</div>
+      <div class="detail">JR Chuo Line → Tokyo Stn → JR Keiyo Line → Maihama</div>
+      <div class="cost"><span>~50 min</span><span>¥530</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → Disney (Bus)</div>
+      <div class="detail">Shinjuku Expressway Bus Terminal (New South Exit)</div>
+      <div class="cost"><span>~40–50 min</span><span>¥1,000 adult</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → Kawaguchiko (Mt. Fuji)</div>
+      <div class="detail">Limited Express Fuji Excursion — direct, no transfer</div>
+      <div class="cost"><span>~2 hours</span><span>¥4,130</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → Akihabara</div>
+      <div class="detail">JR Chuo-Sobu Line → Akihabara (Electric Town Exit)</div>
+      <div class="cost"><span>~20 min</span><span>¥220</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Akihabara → Ueno Zoo</div>
+      <div class="detail">JR Yamanote Line → Ueno Stn</div>
+      <div class="cost"><span>~3 min</span><span>¥160</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → Harry Potter (Toshimaen)</div>
+      <div class="detail">Toei Oedo Line → Toshimaen Stn → 2-min walk</div>
+      <div class="cost"><span>~20 min</span><span>¥280</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Ikebukuro → Harry Potter</div>
+      <div class="detail">Seibu Ikebukuro Line → Toshimaen Stn</div>
+      <div class="cost"><span>~17 min</span><span>¥210</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → teamLab (Kamiyacho)</div>
+      <div class="detail">Marunouchi Line → Kasumigaseki → Hibiya Line → Kamiyacho</div>
+      <div class="cost"><span>~25 min</span><span>¥280</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Harajuku → Shibuya</div>
+      <div class="detail">JR Yamanote Line → Shibuya Stn (Hachiko Exit)</div>
+      <div class="cost"><span>~2 min</span><span>¥160</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shibuya → Shinjuku</div>
+      <div class="detail">JR Yamanote Line → Shinjuku Stn</div>
+      <div class="cost"><span>~7 min</span><span>¥160</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinjuku → Narita Airport</div>
+      <div class="detail">Narita Express (NEX) from Shinjuku Stn</div>
+      <div class="cost"><span>~80 min</span><span>¥3,070</span></div>
+    </div>
+    <div class="transport-card">
+      <div class="route">Shinagawa → Haneda Airport</div>
+      <div class="detail">Keikyu Line from Shinagawa</div>
+      <div class="cost"><span>~15 min</span><span>¥340</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TIPS ===================== -->
+<section id="tips">
+  <div class="section-title">💡 Tips for Your Trip</div>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <h4>🍛 Vegetarian Food</h4>
+      <p>Say <strong>"bejitarian desu"</strong> (I'm vegetarian). Indian restaurants in Shinjuku Nishishinjuku, Ueno, and Nishi-Kasai (Little India). 7-Eleven/FamilyMart have salads and onigiri.</p>
+    </div>
+    <div class="tip-card">
+      <h4>💳 IC Card (Suica)</h4>
+      <p>Buy at Narita or Haneda airport immediately. Load ¥3,000–5,000. Works on all trains, subways, buses, and convenience stores. No need to buy individual tickets.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🌧️ Rainy Days</h4>
+      <p>Days 2, 3, 6, 7 have rain. Pack light compact umbrellas or ponchos. DisneySea, Harry Potter, and teamLab are all fully indoor — rain doesn't affect them.</p>
+    </div>
+    <div class="tip-card">
+      <h4>📱 Data / Wi-Fi</h4>
+      <p>Buy a Japan eSIM before departure (Airalo, IIJmio). Or get a pocket Wi-Fi on arrival. Having data is essential for navigation, Disney app, and tickets.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🎢 Disney Premier Access</h4>
+      <p>Download the TDR official app before arriving. Once inside the park, use it immediately to book Premier Access (paid skip-the-line) for Beauty & the Beast and Journey to Center of Earth.</p>
+    </div>
+    <div class="tip-card">
+      <h4>👗 teamLab Dress Code</h4>
+      <p>Wear pants or shorts — many rooms have mirrored floors and low lighting. They provide modesty covers if needed. Comfortable walking shoes recommended. No stilettos.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🗻 Mt. Fuji Weather</h4>
+      <p>Check <a href="https://isfujivisible.com" target="_blank" style="color:var(--teal)">isfujivisible.com</a> the morning of May 25. If cloudy at 7 AM, it likely won't clear. Depart Shinjuku by 6:30 AM for best views.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🏪 Drugstore Shopping</h4>
+      <p>Matsumoto Kiyoshi and Don Quijote in Shinjuku for skincare, snacks, and souvenirs. Great for last-day shopping (Day 7). Popular buys: Hada Labo, medicated patches, Kit Kat flavors.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🌡️ May Weather</h4>
+      <p>Average 18–26°C. Can be humid. Light layers for Mt. Fuji (bring jacket for 5th Station — it can be 10°C colder). Comfortable walking shoes essential — you'll walk 15,000+ steps daily.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+function showSection(id) {
+  // Hide all sections
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+  // Show target
+  document.getElementById(id).classList.add('active');
+
+  // Highlight tab
+  const tabs = document.querySelectorAll('.nav-tab');
+  const map = ['overview','day1','day2','day3','day4','day5','day6','day7','tickets','transport','tips'];
+  const idx = map.indexOf(id);
+  if (idx >= 0) tabs[idx].classList.add('active');
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Re-trigger fade animations
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = '';
+  });
+}
+</script>
+
+</body>
+</html>
