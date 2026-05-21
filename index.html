@@ -519,13 +519,13 @@
 
 <nav class="nav-tabs" id="navTabs">
   <div class="nav-tab active" onclick="showSection('overview')">Overview</div>
-  <div class="nav-tab" onclick="showSection('day1')">Day 1 · Asakusa</div>
+  <div class="nav-tab" onclick="showSection('day1')">Day 1 · Arrival</div>
   <div class="nav-tab" onclick="showSection('day2')">Day 2 · DisneySea</div>
   <div class="nav-tab" onclick="showSection('day3')">Day 3 · Disneyland</div>
   <div class="nav-tab" onclick="showSection('day4')">Day 4 · Mt. Fuji</div>
   <div class="nav-tab" onclick="showSection('day5')">Day 5 · Akihabara</div>
   <div class="nav-tab" onclick="showSection('day6')">Day 6 · HP + teamLab</div>
-  <div class="nav-tab" onclick="showSection('day7')">Day 7 · Harajuku</div>
+  <div class="nav-tab" onclick="showSection('day7')">Day 7 · Departure</div>
   <div class="nav-tab" onclick="showSection('tickets')">🎟 Tickets</div>
   <div class="nav-tab" onclick="showSection('transport')">🚇 Transport</div>
   <div class="nav-tab" onclick="showSection('tips')">💡 Tips</div>
@@ -601,15 +601,15 @@
     <div class="day-card fade-up" onclick="showSection('day1')">
       <div class="day-card-header">
         <span class="day-number c1">DAY 1</span>
-        <span class="day-card-title">Arrival · Asakusa</span>
+        <span class="day-card-title">Arrival · Roppongi</span>
         <span class="day-card-date">May 22</span>
       </div>
       <div class="day-card-body">
         <ul class="day-card-stops">
-          <li>✈️ Arrive Narita / Haneda</li>
-          <li>⛩️ Senso-ji Temple</li>
-          <li>🏮 Kaminarimon Gate</li>
-          <li>🛍️ Nakamise Shopping Street</li>
+          <li>✈️ Land NRT 16:00</li>
+          <li>🚌 Limousine Bus NRT → Roppongi</li>
+          <li>🏨 Check in Grand Hyatt Tokyo ~19:00</li>
+          <li>🍽️ Dinner in Roppongi area</li>
         </ul>
         <div class="weather-badge weather-rain">⛅ 30% rain · Easy arrival night</div>
       </div>
@@ -703,17 +703,16 @@
     <div class="day-card fade-up" onclick="showSection('day7')">
       <div class="day-card-header">
         <span class="day-number c7">DAY 7</span>
-        <span class="day-card-title">Harajuku · Shibuya · Shinjuku</span>
+        <span class="day-card-title">Departure Day</span>
         <span class="day-card-date">May 28</span>
       </div>
       <div class="day-card-body">
         <ul class="day-card-stops">
-          <li>👗 Takeshita Street Harajuku</li>
-          <li>⛩️ Meiji Jingu Shrine</li>
-          <li>🚦 Shibuya Scramble Crossing</li>
-          <li>🦖 Shinjuku · then airport ✈️</li>
+          <li>🏨 Check out Grand Hyatt Tokyo</li>
+          <li>🚌 Limousine Bus → Narita Airport</li>
+          <li>✈️ Depart NRT (flight TBC)</li>
         </ul>
-        <div class="weather-badge weather-rain">🌧️ 70% rain · Bring umbrella</div>
+        <div class="weather-badge weather-rain">🌧️ 70% rain · No activities planned</div>
       </div>
     </div>
 
@@ -726,33 +725,48 @@
     <div class="day-detail-header">
       <div class="day-badge-lg">01</div>
       <div class="day-meta">
-        <h2>✈️ Arrival · Asakusa</h2>
-        <p>Friday, May 22 · Easy arrival evening · ⛅ ~30% rain</p>
+        <h2>✈️ Arrival · Roppongi</h2>
+        <p>Friday, May 22 · Land NRT 16:00 · ⛅ ~30% rain</p>
       </div>
     </div>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time">AFTERNOON</div>
+        <div class="timeline-time">16:00</div>
         <div class="stop-card">
-          <h3><span class="emoji">✈️</span> Arrive at Airport</h3>
-          <p class="stop-desc">Narita (NRT) or Haneda (HND) → Check in to hotel. Buy a <strong>Suica IC card</strong> at the airport — works on all trains, subways, convenience stores.</p>
+          <h3><span class="emoji">✈️</span> Land at Narita Airport (NRT)</h3>
+          <p class="stop-desc">After landing, clear immigration and collect baggage. Allow about <strong>45–60 minutes</strong> for the full arrival process. Buy a <strong>Suica IC card</strong> at the airport before heading out.</p>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">7:00 PM</div>
+        <div class="timeline-time">~17:00</div>
         <div class="stop-card">
-          <h3><span class="emoji">⛩️</span> Senso-ji Temple & Kaminarimon Gate</h3>
-          <p class="stop-desc">Tokyo's most iconic temple — stunning even at night. Walk through Nakamise Street to the Thunder Gate and main hall. Atmospheric and crowd-free compared to daytime.</p>
-          <div class="stop-address">📍 2-3-1 Asakusa, Taito City, Tokyo 111-0032</div>
-          <span class="transport-tag">🚇 Ginza Line → Asakusa Stn Exit 1 → 1-min walk</span>
-          <span class="transport-tag">From Shinjuku: ~35 min · ¥252</span>
+          <h3><span class="emoji">🚌</span> Airport Limousine Bus → Roppongi / Grand Hyatt Tokyo</h3>
+          <p class="stop-desc">Take the Airport Limousine Bus directly from Narita to Roppongi. No train transfers, no heavy luggage on stairs — just sit back and relax. The bus stops directly at or near Grand Hyatt Tokyo.</p>
+          <div class="stop-address">📍 Limousine Bus stop: Narita Airport Terminal 1 or 2 (ground floor arrivals)</div>
+          <span class="transport-tag">🚌 Narita → Roppongi · ~120 min · ¥3,200/person</span>
+          <span class="transport-tag">4 people total: ~¥12,800</span>
+          <a href="https://www.limousinebus.co.jp/en/" target="_blank" class="ticket-btn ticket-primary">🎟 Book Limousine Bus</a>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">8:30 PM</div>
+        <div class="timeline-time">~19:00</div>
         <div class="stop-card">
-          <h3><span class="emoji">🍜</span> Dinner in Asakusa</h3>
-          <p class="stop-desc">Plenty of options nearby: <strong>tempura, ramen, soba, curry.</strong> Many places accommodate vegetarian requests. Try Hoppy Street for a lively izakaya atmosphere, or Kamiya Bar for something historic.</p>
+          <h3><span class="emoji">🏨</span> Check in — Grand Hyatt Tokyo</h3>
+          <p class="stop-desc">Drop off luggage, freshen up. Grand Hyatt is in the heart of Roppongi — one of Tokyo's best dining districts, so dinner options are just steps away.</p>
+          <div class="stop-address">📍 6-10-3 Roppongi, Minato-ku, Tokyo 106-0032</div>
+          <span class="transport-tag">📞 +81-3-4333-1234</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">~20:00</div>
+        <div class="stop-card">
+          <h3><span class="emoji">🍽️</span> Dinner in Roppongi</h3>
+          <p class="stop-desc">Roppongi has excellent dining for all tastes. Recommended options within walking distance of Grand Hyatt:
+            <br>• <strong>Ninja Tokyo</strong> — themed restaurant, fun for the kids
+            <br>• <strong>Gonpachi</strong> (known as "Kill Bill restaurant") — Japanese izakaya classics
+            <br>• <strong>Spice Lab Tokyo</strong> — Indian/Asian fusion, great for vegetarian
+            <br>• <strong>Tokyo Midtown B1F food floor</strong> — casual options, 5-min walk
+          </p>
         </div>
       </div>
     </div>
@@ -986,38 +1000,38 @@
     <div class="day-detail-header">
       <div class="day-badge-lg">07</div>
       <div class="day-meta">
-        <h2>🏙️ Harajuku · Shibuya · Shinjuku</h2>
-        <p>Thursday, May 28 · 🌧️ 70% rain · Departure day</p>
+        <h2>✈️ Departure Day</h2>
+        <p>Thursday, May 28 · 🌧️ 70% rain · No activities — airport only</p>
       </div>
+    </div>
+    <div class="alert" style="margin-top:1rem;">
+      ⏰ <strong>Flight time TBC.</strong> Once the flight time is confirmed, work backwards: arrive NRT <strong>3 hours before departure</strong>, allow <strong>2 hours</strong> for Limousine Bus, plus checkout time. Update this page accordingly.
     </div>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-time">10:00 AM</div>
+        <div class="timeline-time">MORNING (TBC)</div>
         <div class="stop-card">
-          <h3><span class="emoji">👗</span> Takeshita Street, Harajuku</h3>
-          <p class="stop-desc">Colorful, chaotic, and totally unique — quirky fashion boutiques, rainbow crepes, fairy floss, and accessories. <strong>The 12-yr-old's absolute paradise.</strong> Also visit Meiji Jingu Shrine nearby for a serene contrast (5-min walk from Harajuku Station).</p>
-          <div class="stop-address">📍 1-17-5 Jingumae, Shibuya City, Tokyo 150-0001</div>
-          <span class="transport-tag">🚇 JR Yamanote Line from Shinjuku → Harajuku Stn (Takeshita Exit) · ~3 min · ¥160</span>
+          <h3><span class="emoji">🏨</span> Check out — Grand Hyatt Tokyo</h3>
+          <p class="stop-desc">Grand Hyatt standard checkout is <strong>12:00 noon</strong>. Request late checkout in advance if needed (subject to availability). Store luggage with the concierge if there's time to spare before the bus.</p>
+          <div class="stop-address">📍 Grand Hyatt Tokyo · 6-10-3 Roppongi, Minato-ku, Tokyo 106-0032</div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">12:00 PM</div>
+        <div class="timeline-time">TBC (flight − 5 hrs)</div>
         <div class="stop-card">
-          <h3><span class="emoji">🚦</span> Shibuya Scramble Crossing</h3>
-          <p class="stop-desc">The world's busiest pedestrian crossing — up to 3,000 people cross from every direction simultaneously. Iconic Tokyo experience. See Hachiko Statue nearby. Optional: Shibuya Sky rooftop observation deck for aerial views.</p>
-          <div class="stop-address">📍 2-2-1 Dogenzaka, Shibuya City, Tokyo 150-0043</div>
-          <span class="transport-tag">🚇 JR Yamanote Line from Harajuku → Shibuya Stn (Hachiko Exit) · 2 min · ¥160</span>
+          <h3><span class="emoji">🚌</span> Airport Limousine Bus → Narita Airport</h3>
+          <p class="stop-desc">Take the Airport Limousine Bus from Roppongi directly back to Narita. Allow <strong>2 hours travel time + buffer</strong>. Buses run regularly so no need to book far in advance for the return — but confirm the schedule the day before.</p>
+          <span class="transport-tag">🚌 Roppongi → Narita · ~120 min · ¥3,200/person</span>
+          <span class="transport-tag">4 people total: ~¥12,800</span>
+          <a href="https://www.limousinebus.co.jp/en/" target="_blank" class="ticket-btn ticket-primary">🔗 Check Bus Schedule</a>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-time">2:00 PM</div>
+        <div class="timeline-time">TBC (flight − 3 hrs)</div>
         <div class="stop-card">
-          <h3><span class="emoji">🦖</span> Shinjuku — Final Stop</h3>
-          <p class="stop-desc">Giant 3D cat billboard (East Exit), Godzilla head in Kabukicho, last-minute drugstore shopping (Matsumoto Kiyoshi, Don Quijote). Final ramen or sushi dinner, then head to the airport.</p>
-          <div class="stop-address">📍 Shinjuku City, Tokyo 160-0022</div>
-          <span class="transport-tag">🚇 JR Yamanote Line from Shibuya → Shinjuku · ~7 min · ¥160</span>
-          <span class="transport-tag">✈️ Narita: NEX from Shinjuku ~80 min · ¥3,070</span>
-          <span class="transport-tag">✈️ Haneda: via Shinagawa + Keikyu · ~40 min · ¥660</span>
+          <h3><span class="emoji">✈️</span> Depart Narita Airport (NRT)</h3>
+          <p class="stop-desc">Arrive at Narita at least <strong>3 hours before departure</strong> for international flights. Check-in, immigration, security. Narita Terminal 1 and 2 both have excellent duty-free and dining options airside.</p>
+          <div class="stop-address">📍 Narita International Airport, 1-1 Furugome, Narita, Chiba 282-0004</div>
         </div>
       </div>
     </div>
